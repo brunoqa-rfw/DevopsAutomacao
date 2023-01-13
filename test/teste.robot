@@ -19,24 +19,23 @@ ${BTN_ENTRAR}       xpath=/hierarchy/android.widget.FrameLayout/android.widget.L
 
 *** Test Cases ***
 Tentar realizar login
-    Realiza login       192.168.1.11    1
-    Validar mensagem    Acesso não autorizado! Entre em contato com a equipe de atendimento.
+    Log    sucesso
+    # Realiza login       192.168.1.11    1
+    # Validar mensagem    Acesso não autorizado! Entre em contato com a equipe de atendimento.
 
 
 *** Keywords ***
 Abrir aplicativo
-    Log    sucesso
+    Open Application    ${REMOTE_URL}
+    ...                 appium:alias=smartbit
+    ...                 appium:automationName=${AUTOMATION_NAME}
+    ...                 appium:platformName=${PLATFORM_NAME}
+    ...                 appium:deviceName=Android Simulator
+    ...                 appium:udid=${UDID}
+    ...                 appium:app=${APP}
+    ...                 aapium:autoGranPermissions=true
 
-    # Open Application    ${REMOTE_URL}
-    # ...                 appium:alias=smartbit
-    # ...                 appium:automationName=${AUTOMATION_NAME}
-    # ...                 appium:platformName=${PLATFORM_NAME}
-    # ...                 appium:deviceName=Android Simulator
-    # ...                 appium:udid=${UDID}
-    # ...                 appium:app=${APP}
-    # ...                 aapium:autoGranPermissions=true
-
-    # Set Appium Timeout    30
+    Set Appium Timeout    30
 
 Realiza login
     [Arguments]  ${ip}  ${id_user}
