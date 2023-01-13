@@ -16,7 +16,7 @@ jobs:
             cache: 'pip' # caching pip dependencies
         - run: pip install robotframework
         - run: pip install -r requirements.txt
-        - run: robot -d reports .\test\teste.robot   
+        - run: robot -d reports ./test/*.robot   
 
         - name: Download reports
           uses: actions/download-artifact@v1
