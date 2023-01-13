@@ -55,26 +55,9 @@ jobs:
             SLACK_MESSAGE: 'Teste execultado com sucesso!'
             SLACK_TITLE: 'Teste execultado com sucesso!'
   
-        # - name: Enviar notificação slack - Sucesso
-        #   uses: drilonrecica/action-slack-notify@0.0.3
-        #   if: ${{ success() }}
-        #   env:
-        #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        #     SLACK_CHANNEL: teste
-        #     SLACK_COLOR: ${{ job.status }}
-        #     SLACK_USERNAME: Robô de teste
-        #     SLACK_ICON: https://cdn-icons-png.flaticon.com/512/1642/1642322.png?size=50
-        #     SLACK_MESSAGE: 'Teste execultado com sucesso!'
-        #     SLACK_TITLE: 'Teste execultado com sucesso!'
-        
-        # - name: Enviar notificação slack - Falha
-        #   uses: drilonrecica/action-slack-notify@0.0.3
-        #   if: ${{ failure() }}
-        #   env:
-        #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        #     SLACK_CHANNEL: teste
-        #     SLACK_COLOR: ${{ job.status }}
-        #     SLACK_USERNAME: Robô de teste
-        #     SLACK_ICON: https://cdn-icons-png.flaticon.com/512/1642/1642322.png?size=50
-        #     SLACK_MESSAGE: 'Teste execultado com falha!'
-        #     SLACK_TITLE: 'Teste execultado com falha!'
+        - name: Upload to slack step
+          uses: adrey/slack-file-upload-action@master
+          with:
+            token: ${{ secrets.SLACK_WEBHOOK }}
+            path: reports.html
+            channel: teste
