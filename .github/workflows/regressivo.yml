@@ -11,8 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v2
-        - name: Execute tests
-          uses: joonvena/robotframework-docker-action@v1.0
+        - uses: actions/setup-python@v4
           with:
             python-version: '3.9'
             cache: 'pip' # caching pip dependencies
