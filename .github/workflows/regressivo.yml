@@ -37,21 +37,13 @@ jobs:
           with:
             name: reports
 
-        - name: Enviar report teste slack - Sucesso
-          uses: slackapi/slack-github-action@v1.23.0
+        - name: Notify Slack
+          uses: drilonrecica/action-slack-notify@0.0.3
           env:
-            SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
-            SLACK_COLOR: ${{ job.status }}
-
-        - name: Enviar report teste slack - Falha
-          uses: slackapi/slack-github-action@v1.23.0
-          env:
-            SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
-            SLACK_COLOR: ${{ job.status }}
-
-        - name: Enviar arquivo report slack
-          uses: adrey/slack-file-upload-action@master
-          with:
-            token: ${{ secrets.SLACK_TOKEN }}
-            path: reports.zip
-            channel: teste
+           SLACK_CHANNEL: general
+           SLACK_COLOR: '#3278BD'
+           SLACK_ICON: https://upload.wikimedia.org/wikipedia/commons/6/68/NoxttonBot.png?size=48
+           SLACK_MESSAGE: 'Post Content :rocket:'
+           SLACK_TITLE: Post Title
+           SLACK_USERNAME: drilonrecica
+           SLACK_WEBHOOK: https://hooks.slack.com/services/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
