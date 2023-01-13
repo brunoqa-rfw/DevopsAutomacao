@@ -1,4 +1,4 @@
-name: Robot Framework
+name: Teste Automatizado - Smoke Test
 on: [ push ]
 
 # on:
@@ -9,6 +9,7 @@ jobs:
 
     test:
         runs-on: ubuntu-latest
+        name: Teste automatizados
         steps:
         - uses: actions/checkout@v3
         - uses: actions/setup-python@v4
@@ -28,7 +29,8 @@ jobs:
     
     generate_report:
         if: always()
-        needs: [test] 
+        needs: [test]
+        name: Gerando Reports
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v3
