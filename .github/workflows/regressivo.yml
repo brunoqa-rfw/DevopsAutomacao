@@ -6,14 +6,15 @@ on: [push]
 #    branches: [ master ]
 
 jobs:
-  Sauce Labs App Automate:
+  RunTest:
     runs-on: ubuntu-latest
-    name: Appium Test
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-       - name: Install and Run Appium Server
-         uses: moatazeldebsy/appium-server-gitHub-action@V1.0.4
-      
+        
+      - name: Intall Appium
+        uses: moatazeldebsy/appium-server-gitHub-action@V1.0.4
+        
       - name: Run Test
         run: robot -d logs /test/teste.robot
