@@ -1,20 +1,20 @@
-name: Teste Appium CI
-on: [push]
+name: Robot Framework
+on: [ push ]
 
 #on:
-#  pull_request:
-#    branches: [ master ]
+  #push:
+    #branches: [ master ]
 
 jobs:
-  RunTest:
-    runs-on: ubuntu-latest
+    test:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-python@v4
+          with:
+            python-version: '3.9'
+            cache: 'pip' # caching pip dependencies
+        - run: pip install robotframework
+        - run: pip install -r requirements.txt
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
         
-      - name: Intall Appium
-        uses: moatazeldebsy/appium-server-gitHub-action@V1.0.4
-        
-      - name: Run Test
-        run: robot -d logs /test/teste.robot
