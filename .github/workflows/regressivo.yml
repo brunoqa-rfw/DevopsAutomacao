@@ -39,5 +39,9 @@ jobs:
 
         - name: Notify Slack
           uses: drilonrecica/action-slack-notify@0.0.3
+          if: ${{ sucess() }}
           env:
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+            SLACK_USERNAME: Robô de teste
+            SLACK_ICON: https://cdn-icons-png.flaticon.com/512/1642/1642322.png?size=50
+            SLACK_COLOR: ${{ job.status }}
