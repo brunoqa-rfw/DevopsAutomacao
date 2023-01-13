@@ -46,4 +46,4 @@ jobs:
            SLACK_MESSAGE: 'Post Content :rocket:'
            SLACK_TITLE: Post Title
            SLACK_USERNAME: drilonrecica
-           SLACK_WEBHOOK: https://hooks.slack.com/services/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
+           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
