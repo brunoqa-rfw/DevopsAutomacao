@@ -17,4 +17,5 @@ jobs:
         - run: pip install robotframework
         - run: pip install -r requirements.txt
 
-        
+        - name: "Run UI Tests"
+          uses: vgaidarji/android-github-actions-emulator@v1.0.1
