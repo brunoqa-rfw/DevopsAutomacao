@@ -45,7 +45,7 @@ jobs:
         name: Slack Notification
         runs-on: ubuntu-latest
         steps:
-        - uses: actions/checkout@v2
+        - uses: actions/checkout@v3
         - name: Slack Notification
           uses: rtCamp/action-slack-notify@v2
           env:
@@ -56,7 +56,8 @@ jobs:
             SLACK_ICON: https://cdn-icons-png.flaticon.com/512/1642/1642322.png?size=50
             SLACK_MESSAGE: 'Teste execultado com sucesso!'
             SLACK_TITLE: 'Teste execultado com sucesso!'
-  
+        
+        - uses: actions/checkout@v3
         - name: Upload to slack step
           uses: adrey/slack-file-upload-action@master
           with:
