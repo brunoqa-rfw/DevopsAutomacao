@@ -1,8 +1,8 @@
 *** Settings ***
 Library    AppiumLibrary
 
-Test Setup       Abrir aplicativo
-Test Teardown    Fechar aplicativo
+# Test Setup       Abrir aplicativo
+# Test Teardown    Fechar aplicativo
 
 *** Variables ***
 ### CAPABILITYS
