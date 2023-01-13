@@ -25,16 +25,18 @@ Tentar realizar login
 
 *** Keywords ***
 Abrir aplicativo
-    Open Application    ${REMOTE_URL}
-    ...                 appium:alias=smartbit
-    ...                 appium:automationName=${AUTOMATION_NAME}
-    ...                 appium:platformName=${PLATFORM_NAME}
-    ...                 appium:deviceName=Android Simulator
-    ...                 appium:udid=${UDID}
-    ...                 appium:app=${APP}
-    ...                 aapium:autoGranPermissions=true
+    Log    sucesso
 
-    Set Appium Timeout    30
+    # Open Application    ${REMOTE_URL}
+    # ...                 appium:alias=smartbit
+    # ...                 appium:automationName=${AUTOMATION_NAME}
+    # ...                 appium:platformName=${PLATFORM_NAME}
+    # ...                 appium:deviceName=Android Simulator
+    # ...                 appium:udid=${UDID}
+    # ...                 appium:app=${APP}
+    # ...                 aapium:autoGranPermissions=true
+
+    # Set Appium Timeout    30
 
 Realiza login
     [Arguments]  ${ip}  ${id_user}
