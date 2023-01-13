@@ -1,9 +1,11 @@
-name: Teste Automatizado - Smoke Test
-on: [ push ]
+name: Smoke Test Agendado
+# on: [ push ]
 
-# on:
-#   push:
-#     branches: [ master ]
+on:
+  push:
+    branches: [ master ]
+  schedule:
+    - cron: 0 10 * * 1,3,5
 
 jobs:
 
