@@ -16,6 +16,17 @@ jobs:
             cache: 'pip' # caching pip dependencies
         - run: pip install robotframework
         - run: pip install -r requirements.txt
+        - run: robot -d reports /test/teste.robot
 
-        - name: "Run UI Tests"
-          uses: vgaidarji/android-github-actions-emulator@v1.0.1
+    generate_report:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Download reports
+          uses: actions/download-artifact@v1
+          with:
+            name: reports
+        - name: Send report to commit
+          uses: joonvena/robotframework-reporter-action@v2
+          with:
+            gh_access_token: ${{ secrets.GITHUB_TOKEN }}
