@@ -1,96 +1,55 @@
-name: Teste Automatizado - Smoke Test
+name: Teste Automatizado
 on: [ push ]
 
-# # on:
-# #   push:
-# #     branches: [ master ]
+# on:
+#   push:
+#     branches: [ master ]
 
 jobs:
-  test:
-    runs-on: macos-latest
-    strategy:
-      matrix:
-        api-level: [21, 23, 29]
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
 
-      - name: Gradle cache
-        uses: gradle/gradle-build-action@v2
-        
-      - name: AVD cache
-        uses: actions/cache@v3
-        id: avd-cache
-        with:
-          path: |
-            ~/.android/avd/*
-            ~/.android/adb*
-          key: avd-${{ matrix.api-level }}
+    test:
+        runs-on: ubuntu-latest
+        name: Teste automatizados
+        steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-python@v4
+          with:
+            python-version: '3.9'
+            cache: 'pip' # caching pip dependencies
+        - run: pip install robotframework
+        - run: pip install -r requirements.txt
+        - run: robot -d reports -v SALCELABS:False ./test/*.robot
 
-      - name: create AVD and generate snapshot for caching
-        if: steps.avd-cache.outputs.cache-hit != 'true'
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: ${{ matrix.api-level }}
-          force-avd-creation: false
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          disable-animations: false
-          script: echo "Generated AVD snapshot for caching."
-
-      - name: run tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: ${{ matrix.api-level }}
-          force-avd-creation: false
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          disable-animations: true
-          script: ./gradlew connectedCheck
-
-# jobs:
-
-#     test:
-#         runs-on: ubuntu-latest
-#         name: Teste automatizados
-#         steps:
-#         - uses: actions/checkout@v3
-#         - uses: actions/setup-python@v4
-#           with:
-#             python-version: '3.9'
-#             cache: 'pip' # caching pip dependencies
-#         - run: pip install robotframework
-#         - run: pip install -r requirements.txt
-#         - run: robot -d reports -v SALCELABS:False ./test/*.robot
-
-#         - name: Upload test results
-#           uses: actions/upload-artifact@v1
-#           if: always()
-#           with:
-#             name: reports
-#             path: reports
+        - name: Upload test results
+          uses: actions/upload-artifact@v1
+          if: always()
+          with:
+            name: reports
+            path: reports
     
-#         - name: Gerando Reports
-#           uses: actions/download-artifact@v1
-#           with:
-#             name: reports
+        - name: Gerando Reports
+          uses: actions/download-artifact@v1
+          with:
+            name: reports
        
-#         - name: Slack Notification - Sucesso
-#           uses: rtCamp/action-slack-notify@v2
-#           if: ${{ success() }}
-#           env:
-#             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-#             SLACK_CHANNEL: teste
-#             SLACK_COLOR: ${{ job.status }}
-#             SLACK_USERNAME: Robô de teste
-#             SLACK_ICON: https://cdn-icons-png.flaticon.com/512/1642/1642322.png?size=50
-#             SLACK_TITLE: 'Teste do PR execultado com sucesso! :white_check_mark:'
+        - name: Slack Notification - Sucesso
+          uses: rtCamp/action-slack-notify@v2
+          if: ${{ success() }}
+          env:
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+            SLACK_CHANNEL: teste
+            SLACK_COLOR: ${{ job.status }}
+            SLACK_USERNAME: Robô de teste
+            SLACK_ICON: https://cdn-icons-png.flaticon.com/512/1642/1642322.png?size=50
+            SLACK_TITLE: 'Teste do PR execultado com sucesso! :white_check_mark:'
 
-#         - name: Slack Notification - Falha
-#           uses: rtCamp/action-slack-notify@v2
-#           if: ${{ failure() }}
-#           env:
-#             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-#             SLACK_CHANNEL: teste
-#             SLACK_COLOR: ${{ job.status }}
-#             SLACK_USERNAME: Robô de teste
-#             SLACK_ICON: https://cdn-icons-png.flaticon.com/512/1642/1642322.png?size=50
-#             SLACK_TITLE: 'Teste execultado com sucesso! :fire:'
+        - name: Slack Notification - Falha
+          uses: rtCamp/action-slack-notify@v2
+          if: ${{ failure() }}
+          env:
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+            SLACK_CHANNEL: teste
+            SLACK_COLOR: ${{ job.status }}
+            SLACK_USERNAME: Robô de teste
+            SLACK_ICON: https://cdn-icons-png.flaticon.com/512/1642/1642322.png?size=50
+            SLACK_TITLE: 'Teste execultado com sucesso! :fire:'
