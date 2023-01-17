@@ -11,6 +11,10 @@ jobs:
         runs-on: ubuntu-latest
         name: Teste automatizados
         steps:
+
+        - name: Run UI Tests
+          uses: vgaidarji/android-github-actions-emulator@v1.0.1
+          
         - uses: actions/checkout@v3
         - uses: actions/setup-python@v4
           with:
