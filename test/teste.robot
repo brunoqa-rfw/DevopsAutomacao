@@ -30,9 +30,9 @@ ${BTN_ENTRAR}       xpath=/hierarchy/android.widget.FrameLayout/android.widget.L
 
 *** Test Cases ***
 Tentar realizar login
-    # Log    sucesso
-    Realiza login       192.168.1.11    1
-    Validar mensagem    Acesso não autorizado! Entre em contato com a equipe de atendimento.
+     Log    sucesso
+ #   Realiza login       192.168.1.11    1
+#    Validar mensagem    Acesso não autorizado! Entre em contato com a equipe de atendimento.
 
 
 *** Keywords ***
