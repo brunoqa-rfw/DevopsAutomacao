@@ -13,7 +13,8 @@ ${UDID}               emulator-5554
 ${APP}                ${EXECDIR}/resources/app/smartbit.apk
 
 ### Salcelabs
-${SAUCELABS_REMOTE_URL}            http://${SAUCE_USERNAME}:${SAUCE_ACCESS_KEY}@ondemand.saucelabs.com/wd/hub
+
+${SAUCELABS_REMOTE_URL}            http://oauth-brunoqa.rfw-aa883:5207674b-6059-485d-bf71-d6346007a81e@ondemand.saucelabs.com/wd/hub
 ${SAUCELABS_AUTOMATION_NAME}       Andoird
 ${SALCELABS_PLATAFORM_VERSION}     12.0
 ${SALCELABS_AUTOMATION_NAME}       UiAutomator2
