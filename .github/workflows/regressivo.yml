@@ -41,8 +41,6 @@ jobs:
             slack_username: Robozao
             status: success
             if: success()
-  
-            if: always()
        
  #       - name: Slack Notification - Sucesso
   #        uses: rtCamp/action-slack-notify@v2
