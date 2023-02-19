@@ -47,7 +47,7 @@ jobs:
              SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
              SLACK_CHANNEL: nossa
           run: |
-            curl -F file=@reports/logs.html -F "initial_comment=Novo arquivo gerado!" -F channels=$SLACK_CHANNEL $SLACK_WEBHOOK_URL
+            curl -F file=@reports/log.html -F "initial_comment=Novo arquivo gerado!" -F channels=$SLACK_CHANNEL $SLACK_WEBHOOK_URL
 
        
 
