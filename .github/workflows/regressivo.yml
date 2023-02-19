@@ -19,7 +19,7 @@ jobs:
             cache: 'pip' # caching pip dependencies
         - run: pip install robotframework
         - run: pip install -r requirements.txt
-        - run: robot -d reports -v SALCELABS:True ./test/*.robot
+        - run: robot -d reports -v SALCELABS:False ./test/*.robot
 
         - name: Upload test results
           uses: actions/upload-artifact@v1
