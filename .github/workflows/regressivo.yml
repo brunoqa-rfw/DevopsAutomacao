@@ -51,4 +51,4 @@ jobs:
        
         - name: Enviar arquivo HTML para o Slack
           run: |
-            curl -F file=@reports.zip -F initial_comment="Mensagem opcional" -F channels=#nossa https://hooks.slack.com/services/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
+            curl -F file=@reports.zip -F initial_comment="Mensagem opcional" -F channels=#brunou https://hooks.slack.com/services/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
