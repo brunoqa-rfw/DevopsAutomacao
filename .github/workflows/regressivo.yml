@@ -18,7 +18,7 @@ jobs:
             cache: 'pip' # caching pip dependencies
         - run: pip install robotframework
         - run: pip install -r requirements.txt
-        - run: robot -d reports -v SALCELABS:False ./test/*.robot
+        - run: robot -d reports -v SALCELABS:True ./test/*.robot
 
         - name: Upload test results
           uses: actions/upload-artifact@v1
@@ -53,10 +53,11 @@ jobs:
             SLACK_USERNAME: Robô de teste
             SLACK_ICON: https://cdn-icons-png.flaticon.com/512/1642/1642322.png?size=50
             SLACK_TITLE: 'Teste execultado com sucesso! :fire:'
-            
-        - uses: MeilCli/slack-upload-file@v3
+        
+        - name: Enviar artefato    
+          uses: MeilCli/slack-upload-file@v3
           with:
             slack_token: ${{ secrets.SLACK_TOKEN }}
             channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
-            file_path: '/reports'
+            file_path: '/reports/'
             initial_comment: 'post by slack-upload-file'
