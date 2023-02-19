@@ -13,8 +13,7 @@ ${UDID}               emulator-5554
 ${APP}                ${EXECDIR}/resources/app/smartbit.apk
 
 ### Salcelabs
-${SALCELABS_KEY}                   oauth-bmdscftv-d8754:16dd6892-189a-46cc-981d-c7fcbe2da5fb
-${SALCELABS_URL}                   https://oauth-bmdscftv-d8754:16dd6892-189a-46cc-981d-c7fcbe2da5fb@ondemand.us-west-1.saucelabs.com:80/wd/hub
+${SAUCELABS_REMOTE_URL}            http://${SAUCE_USERNAME}:${SAUCE_ACCESS_KEY}@ondemand.saucelabs.com/wd/hub
 ${SAUCELABS_AUTOMATION_NAME}       Andoird
 ${SALCELABS_PLATAFORM_VERSION}     12.0
 ${SALCELABS_AUTOMATION_NAME}       UiAutomator2
@@ -55,7 +54,7 @@ Abrir aplicativo Local
     Set Appium Timeout    30
 
 Abrir aplicativo Salcelabs
-    Open Application    remote_url=https://oauth-bmdscftv-d8754:16dd6892-189a-46cc-981d-c7fcbe2da5fb@ondemand.us-west-1.saucelabs.com:443/wd/hub    alias=None
+    Open Application    remote_url=${SAUCELABS_REMOTE_URL}    alias=None
     ...    platformName=Android
     ...    app=storage:filename=smartbit.apk
     ...    deviceName=Android GoogleAPI Emulator
