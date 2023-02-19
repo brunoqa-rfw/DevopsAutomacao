@@ -44,13 +44,10 @@ jobs:
             
         - name: Salvar relatórios
           run: |
-            ls
-            ls reports
+            ls reports/
 #            mkdir reports
  #           cp -r reports/* reports/
        
         - name: Enviar arquivo HTML para o Slack
-          env:
-            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           run: |
-            curl -X POST file=@reports/log.html $SLACK_WEBHOOK_URL
+            curl -X POST file=@reports/log.html https://hooks.slack.com/services/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
