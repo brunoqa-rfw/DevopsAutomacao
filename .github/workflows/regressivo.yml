@@ -45,7 +45,7 @@ jobs:
         - name: Send file to Slack
           uses: curl-actions/slack@v3
           with:
-            args: |
+            run: |
                 -X POST \
                 -H 'Content-type: application/octet-stream' \
                 -H "Authorization: Bearer ${{ secrets.SLACK_WEBHOOK_URL }}" \
