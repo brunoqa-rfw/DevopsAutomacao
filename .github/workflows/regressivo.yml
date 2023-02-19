@@ -1,4 +1,4 @@
-name: Teste Automatizado
+name: Teste Automatizado bruno
 on: [ push ]
 
 # on:
