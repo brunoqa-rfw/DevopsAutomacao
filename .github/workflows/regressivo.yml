@@ -34,13 +34,10 @@ jobs:
             name: reports
             
         - name: Send Slack notification
-          uses: slack/webhook@v3.2.0
-          env:
-            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          uses: craftech-io/slack-action@v1
           with:
-            text: "Mensagem que deseja enviar para o Slack"
-            channel: "#brunou" #opcional
-            username: "Robot" #opcional
+            slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+            if: always()
        
         - name: Slack Notification - Sucesso
           uses: rtCamp/action-slack-notify@v2
