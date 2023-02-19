@@ -8,7 +8,7 @@ on: [ push ]
 
 jobs:
 
-    test:
+    test:            
         runs-on: ubuntu-latest
         name: Teste automatizados
         steps:
@@ -32,9 +32,7 @@ jobs:
           uses: actions/download-artifact@v1
           with:
             name: reports
-        - env:
-            DIRECTORY_PATH: ${{ github.workspace }}/reports
-            
+
         - name: Send Slack notification
           uses: craftech-io/slack-action@v1
           with:
@@ -49,7 +47,7 @@ jobs:
              SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
              SLACK_CHANNEL: nossa
           run: |
-            curl -F file=@DIRECTORY_PATH/log.html -F "initial_comment=Novo arquivo gerado!" -F channels=$SLACK_CHANNEL $SLACK_WEBHOOK_URL
-
+            curl -F file=@${{ github.workspace }}/reports -F "initial_comment=Novo arquivo gerado!" -F channels=$SLACK_CHANNEL $SLACK_WEBHOOK_URL
+    
        
 
