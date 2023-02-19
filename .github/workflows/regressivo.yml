@@ -46,7 +46,9 @@ jobs:
           uses: montudor/action-zip@v1
           with:
             args: zip -qq -r reports.zip reports
+        - run:
+            ls
        
         - name: Enviar arquivo HTML para o Slack
           run: |
-            curl -X POST file=@reports.zip https://hooks.slack.com/services/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
+            curl -X POST file=@reports.zip http://hooks.slack.com/services/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
