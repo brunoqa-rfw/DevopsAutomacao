@@ -44,8 +44,9 @@ jobs:
             
         - name: Salvar relatórios
           run: |
-            mkdir report
-            cp -r reports/* report/
+            ls
+#            mkdir report
+ #           cp -r reports/* report/
        
         - name: Enviar arquivo HTML para o Slack
           env:
