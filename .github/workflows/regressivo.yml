@@ -36,7 +36,7 @@ jobs:
           uses: rtCamp/action-slack-notify@v2
           if: ${{ success() }}
           env:
-            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+            SLACK_WEBHOOK: https://hooks.slack.com/services/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
             SLACK_CHANNEL: teste
             SLACK_COLOR: ${{ job.status }}
             SLACK_USERNAME: Robô de teste
@@ -47,17 +47,10 @@ jobs:
           uses: rtCamp/action-slack-notify@v2
           if: ${{ failure() }}
           env:
-            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+            SLACK_WEBHOOK: https://hooks.slack.com/services/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
             SLACK_CHANNEL: teste
             SLACK_COLOR: ${{ job.status }}
             SLACK_USERNAME: Robô de teste
             SLACK_ICON: https://cdn-icons-png.flaticon.com/512/1642/1642322.png?size=50
             SLACK_TITLE: 'Teste execultado com sucesso! :fire:'
-        
-        - name: Enviar artefato    
-          uses: MeilCli/slack-upload-file@v3
-          with:
-            slack_token: ${{ secrets.SLACK_TOKEN }}
-            channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
-            file_path: '/reports/'
-            initial_comment: 'post by slack-upload-file'
+
