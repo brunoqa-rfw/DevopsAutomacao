@@ -55,7 +55,7 @@ Abrir aplicativo Local
     Set Appium Timeout    30
 
 Abrir aplicativo Salcelabs
-    Open Application    remote_url=${SAUCELABS_REMOTE_URL}    alias=None
+    Open Application    remote_url=https://oauth-brunoqa.rfw-aa883:5207674b-6059-485d-bf71-d6346007a81e@ondemand.us-west-1.saucelabs.com:443/wd/hub    alias=None
     ...    platformName=Android
     ...    app=storage:filename=smartbit.apk
     ...    deviceName=Android GoogleAPI Emulator
