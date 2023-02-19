@@ -42,6 +42,17 @@ jobs:
             status: success
             if: success()
        
+        - name: Send file to Slack
+          uses: curl-actions/slack@v3
+          with:
+            args: |
+                -X POST \
+                -H 'Content-type: application/octet-stream' \
+                -H "Authorization: Bearer ${{ secrets.SLACK_WEBHOOK_URL }}" \
+                --data-binary "@reports" \
+                "https://slack.com/api/files.upload?channels=C04Q6QVNLKX&title=File Title"
+       
+       
  #       - name: Slack Notification - Sucesso
   #        uses: rtCamp/action-slack-notify@v2
    #       if: ${{ success() }}
